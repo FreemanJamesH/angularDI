@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Angular DI</title>
+        <script src="https://code.angularjs.org/1.5.8/angular.js" charset="utf-8"></script>
+        <script src="app.js" charset="utf-8"></script>
+    </head>
+    <body ng-controller="MainCtrl">
+        <h1>I love pokemon:</h1>
+        <button ng-click="getPokemon()">Get me a pokemon!</button>
+        <h3>Your random pokemon is:{{pokemon}}</h3><img src="{{sprite}}" alt=""/>
+        <hr>
+        <h1>I also love math.</h1>
+        <label for="number1">Number 1:</label>
+        <input id="number1" type="number" ng-model="number1">
+        <label for="number2">Number 2:</label>
+        <input id="number2" type="number" ng-model="number2">
+        <h3>Number 1: {{number1}}</h3>
+        <h3>Number 2: {{number2}}</h3>
+        <button ng-click="add()">Add</button>
+        <button ng-click="subtract()">Subtract</button>
+        <button ng-click="multiply()">Multiply</button>
+        <button ng-click="divide()">Divide</button>
+        <h3>Result: {{result}}</h3>
+    </body>
+</html>
