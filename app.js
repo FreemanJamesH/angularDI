@@ -23,7 +23,21 @@ app.controller('MainController', ['$scope', '$http', 'MathService', function($sc
 
   $scope.result = 'No results...yet.'
 
-  $scope.add = MathService.add()
+  $scope.add = function(){
+    $scope.result = MathService.add($scope.number1, $scope.number2)
+  }
+
+  $scope.subtract = function(){
+    $scope.result = MathService.subtract($scope.number1, $scope.number2)
+  }
+
+  $scope.multiply = function(){
+    $scope.result = MathService.multiply($scope.number1, $scope.number2)
+  }
+
+  $scope.divide = function(){
+    $scope.result = MathService.divide($scope.number1, $scope.number2)
+  }
 
 }])
 
