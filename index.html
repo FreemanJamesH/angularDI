@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Dependency Injection</title>
+        <script src="https://code.angularjs.org/1.5.8/angular.js" charset="utf-8"></script>
+        <script src="app.js" charset="utf-8"></script>
+    </head>
+    <body ng-controller="MainController">
+        <h1>I love MTG.</h1>
+        <h3>Here is your Magic Card: {{magicCard}}</h3>
+        <button ng-click="getCard()">Get card</button><br><br>
+        <img ng-src="{{picture}}" alt=''/>
+        <hr>
+        <h1>I love math.</h1>
+        <label for="number1">Number 1:</label>
+        <input ng-model="number1" id="number1" type="number"><br><br>
+        <label for="number2">Number2:</label>
+        <input ng-model="number2" id="number2" type="number">
+        <h3>Number 1: {{number1}}</h3>
+        <h3>Number 2: {{number2}}</h3>
+        <div>
+            <button ng-click="add()">Add</button>
+            <button ng-click="subtract()">Subtract</button>
+            <button ng-click="multiply()">Multiply</button>
+            <button ng-click="divide()">Divide</button>
+        </div>
+        <h3>Your result: {{result}}</h3>
+    </body>
+</html>
