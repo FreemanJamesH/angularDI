@@ -1,51 +1,59 @@
 let app = angular.module('myApp', [])
 
-app.controller('MainCtrl', function($scope, $http, mathService) {
+app.controller('MainController', ['$scope', '$http', 'MathService', function($scope, $http, MathService) {
 
-  //$scope and $http is are core services, mathService a service we made
+  $scope.magicCard = 'magicCard'
+  $scope.pokePicture = 'http://rs1096.pbsrc.com/albums/g328/PIueto/Etc/pokeball.gif~c200'
 
-  $scope.getPokemon = function() {
-    let randomNumber = Math.floor(Math.random() * 721)
+  $scope.getCard = function(){
+    console.log('getting magicCard');
+    let randomNumber = (Math.floor(Math.random() * 100) + 1)
     $http({
-        method: 'GET',
-        url: `http://pokeapi.co/api/v2/pokemon/${randomNumber}`
-      })
-      .then(function successCallback(data, status, headers, config) {
-          $scope.pokemon = data.data.name;
-          $scope.sprite = data.data.sprites.front_default
-          console.log($scope.sprite);
-        },
-        function errorCallback(data, status, headers, config) {
-          $scope.pokemon = 'Sorry, an error occurred.'
-        });
+      method: 'GET',
+      url: `https://api.deckbrew.com/mtg/cards?page=${randomNumber}`
+    })
+    .then(function successCallback(data, status, headers, config) {
+      $scope.magicCard = data.data[0].name
+      $scope.picture = data.data[0].editions[0].image_url
+    },
+    function errorCallback(data, status, headers, config) {
+
+    });
   }
 
-  $scope.add = function() {
-    $scope.result = mathService.add($scope.number1, $scope.number2)
-  }
-  $scope.subtract = function() {
-    $scope.result = mathService.subtract($scope.number1, $scope.number2)
-  }
-  $scope.multiply = function() {
-    $scope.result = mathService.multiply($scope.number1, $scope.number2)
-  }
-  $scope.divide = function() {
-    $scope.result = mathService.divide($scope.number1, $scope.number2)
-  }
-})
+  $scope.result = 'No results...yet.'
 
-app.service('mathService', function() {
+  $scope.add = function(){
+    $scope.result = MathService.add($scope.number1, $scope.number2)
+  }
+
+  $scope.subtract = function(){
+    $scope.result = MathService.subtract($scope.number1, $scope.number2)
+  }
+
+  $scope.multiply = function(){
+    $scope.result = MathService.multiply($scope.number1, $scope.number2)
+  }
+
+  $scope.divide = function(){
+    $scope.result = MathService.divide($scope.number1, $scope.number2)
+  }
+
+}])
+
+app.service('MathService', function(){
   return {
-    add: function(a, b) {
+    add: function(a,b){
       return a + b
     },
-    subtract: function(a, b) {
+    subtract: function(a,b){
       return a - b
     },
-    multiply: function(a, b) {
+    multiply: function(a,b){
       return a * b
     },
-    divide: function(a, b) {
+    divide: function(a,b){
+>>>>>>> cleanSlate
       return a / b
     }
   }
