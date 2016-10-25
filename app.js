@@ -53,7 +53,6 @@ app.service('MathService', function(){
       return a * b
     },
     divide: function(a,b){
->>>>>>> cleanSlate
       return a / b
     }
   }
